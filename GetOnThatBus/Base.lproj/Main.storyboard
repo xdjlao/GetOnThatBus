@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wdS-gX-e0K">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Get On That Bus-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GetOnThatBus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dFk-cD-q7V">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="cQa-bL-IwR"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dFk-cD-q7V" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="F6N-91-2Jx"/>
+                            <constraint firstItem="dFk-cD-q7V" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Wrq-Dn-g92"/>
+                            <constraint firstAttribute="trailing" secondItem="dFk-cD-q7V" secondAttribute="trailing" id="lYT-6B-D2d"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dFk-cD-q7V" secondAttribute="bottom" id="pcd-wF-jTs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Get On That Bus" id="koI-m1-d52"/>
+                    <connections>
+                        <outlet property="mapView" destination="dFk-cD-q7V" id="h7A-sn-Oza"/>
+                        <segue destination="4qi-q8-FPa" kind="show" identifier="RouteDetail" id="1nD-0w-f8i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092" y="278"/>
+        </scene>
+        <!--Route Detail View Controller-->
+        <scene sceneID="gbH-1t-R1g">
+            <objects>
+                <viewController id="4qi-q8-FPa" customClass="RouteDetailViewController" customModule="GetOnThatBus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hsi-Wv-0cw"/>
+                        <viewControllerLayoutGuide type="bottom" id="fKg-L9-gDl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8br-rs-a4u">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="17C-48-Aal" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1743" y="278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NWB-cE-9vI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wdS-gX-e0K" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OzB-Sy-GBh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="fgM-fe-n5n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PcY-3a-LDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="280" y="278"/>
+        </scene>
+    </scenes>
+</document>
