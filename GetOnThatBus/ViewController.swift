@@ -95,20 +95,48 @@ class ViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
-        pin.canShowCallout = true
-        pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
-        return pin
+        let interModalDict = (annotation as! RouteAnnotation).routes
+        if let interModalObj = interModalDict!.objectForKey("inter_modal") {
+            let interModal = interModalObj as! String
+            if interModal == "Metra" {
+                let pin = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+                pin.image = UIImage(named: "metra")
+                pin.canShowCallout = true
+                pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+                
+                return pin
+            } else if interModal == "Pace" {
+                let pin = MKAnnotationView(annotation: annotation, reuseIdentifier: nil)
+                pin.image = UIImage(named: "pace")
+                pin.canShowCallout = true
+                pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+                
+                return pin
+            } else {
+                let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
+                pin.canShowCallout = true
+                pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+                
+                return pin
+            }
+        } else {
+            let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
+            pin.canShowCallout = true
+            pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+            
+            return pin
+        }
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        self.currentRoute = (view.annotation as! RouteAnnotation).routes!
         self.performSegueWithIdentifier("RouteDetail", sender: control)
-
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destination = segue.destinationViewController as! RouteDetailViewController
-//        destination.route =
+        destination.route = self.currentRoute
+        destination.navigationItem.title = self.currentRoute.objectForKey("routes") as? String
     }
 }
 
